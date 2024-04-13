@@ -4,7 +4,7 @@ document.body.style.margin = '0';
 
 class Initial extends Phaser.Scene {
   create() {
-    let counter = 0;
+    let counter = +(localStorage.getItem('counter') ?? 0);
 
     this.cameras.main.centerOn(0, 0);
 
@@ -18,6 +18,7 @@ class Initial extends Phaser.Scene {
       .on('pointerdown', () => {
         ++counter;
         counterText.text = counter+'';
+        localStorage.setItem('counter', counter+'');
       })
       ;
   }
